@@ -75,8 +75,8 @@ The alert includes a countdown timer showing exactly how much time is left until
     Your `.env` file should look like this:
 
     ```
-    GITHUB_USERNAME="YourGitHubUsername"
-    GITHUB_PAT="ghp_xxxxxxxxxxxxxxxxxxxxxxxxx"
+    GITHUB_USERNAME="<YOUR_USERNAME>"
+    GITHUB_PAT="<YOUR_PERSONAL_ACCESS_TOKEN>"
     ```
 
 ### 4. Test the Script
