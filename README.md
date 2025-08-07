@@ -1,5 +1,8 @@
 # GitHub Streak Alert
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
+
 A simple but powerful Python script to prevent you from losing your GitHub contribution streak. It uses the official GitHub GraphQL API to check if you've made any contributions for the current day (in UTC) and warns you if you haven't.
 
 The alert includes a countdown timer showing exactly how much time is left until the daily reset, so you know how urgent the situation is.
@@ -26,7 +29,7 @@ The alert includes a countdown timer showing exactly how much time is left until
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repo-url> # Replace with your new repository URL
+    git clone https://github.com/0xReLogic/github-streak-alert.git
     cd github-streak-alert
     ```
 
