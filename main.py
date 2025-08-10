@@ -68,7 +68,12 @@ def main():
     today_utc_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     print(f"Checking contributions for {GITHUB_USERNAME} on {today_utc_str} (UTC)...")
     
-    contribution_count = get_todays_contribution_count(GITHUB_USERNAME, GITHUB_TOKEN)
+    # Override with mock value if environment variable is set
+    if os.getenv("MOCK_CONTRIBUTIONS") == "10":
+        contribution_count = 10
+        print("(Using mock contribution count: 10)")
+    else:
+        contribution_count = get_todays_contribution_count(GITHUB_USERNAME, GITHUB_TOKEN)
 
     if contribution_count is None:
         # Error message was already printed by the function
@@ -92,4 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
