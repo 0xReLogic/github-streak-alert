@@ -1,5 +1,3 @@
-
-````markdown
 # 🚀 GitHub Daily Contribution Checker
 
 👋 Hi! I'm **Shayan Taherkhani** ([@shayanthn](https://github.com/shayanthn)) —  
