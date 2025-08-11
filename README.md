@@ -108,6 +108,19 @@ To make this a true alert system, you need to schedule it to run automatically e
 6.  **Program/script:** Browse to the `run_checker.bat` file in this project's directory.
 7.  Click **Finish**.
 
+#### Windows notes: ensuring the script runs in the correct folder
+
+- __Default (recommended)__: Keep `run_checker.bat` inside the project folder (same folder as `main.py`). The script auto-detects its folder and runs correctly.
+- __If you move the batch file__: Edit it with Notepad and set `PROJECT_DIR` to your project path (include a trailing backslash `\`). Example:
+
+    ```bat
+    rem Edit the top of run_checker.bat
+    set "PROJECT_DIR=C:\\Path\\To\\github-streak-alert\\"
+    ```
+
+- __Alternative__: In Task Scheduler, open your task > Actions > Edit..., and set the **Start in (optional)** field to your project directory (e.g., `C:\Path\To\github-streak-alert`).
+
+
 ### For macOS / Linux (using Cron)
 
 1.  Open your terminal and edit your crontab file:
