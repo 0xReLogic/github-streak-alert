@@ -2,6 +2,7 @@ import os
 import requests
 from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
+# https://github.com/0xReLogic/github-streak-alert — made with love by 0xReLogic
 
 # Load environment variables from .env file
 load_dotenv()
@@ -89,6 +90,10 @@ def main():
         print(f"\nWARNING! You have 0 contributions on GitHub today ({today_utc_str}).")
         print(f"Time remaining until reset: {hours} hours, {minutes} minutes.")
         print("Push a commit soon to keep your streak alive! 😨")
+
+    # Footer watermark
+    print("\nProject: https://github.com/0xReLogic/github-streak-alert")
+    print("Made with ❤️  Allen Elzayn")
 
 if __name__ == "__main__":
     main()
