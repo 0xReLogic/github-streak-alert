@@ -12,7 +12,7 @@ GITHUB_USERNAME = os.getenv("GITHUB_USERNAME")
 GITHUB_TOKEN = os.getenv("GITHUB_PAT")
 GITHUB_API_URL = "https://api.github.com/graphql"
 
-def get_todays_contribution_count(username, token):
+def get_todays_contribution_count(username: str, token: str) -> Optional[int]:
     """Fetches the total contribution count for today using the GitHub GraphQL API."""
     if not username or not token:
         print("Error: GITHUB_USERNAME or GITHUB_PAT not found in .env file.")
@@ -52,20 +52,20 @@ def get_todays_contribution_count(username, token):
 
         if 'errors' in data:
             error_message = data['errors'][0]['message']
-            print(f"GraphQL API Error: {error_message}")
+            print(f"GraphQL API Error: {error_message}\nPlease check your GitHub token permissions and username.")
             return None
 
         total_contributions = data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
         return total_contributions
 
     except requests.exceptions.RequestException as e:
-        print(f"Error contacting GitHub API: {e}")
+        print(f"Error contacting GitHub API: {e}\nCheck your internet connection and GitHub API status.")
         return None
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
 
-def main():
+def main() -> None:
     today_utc_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     print(f"Checking contributions for {GITHUB_USERNAME} on {today_utc_str} (UTC)...")
     
@@ -83,18 +83,11 @@ def main():
         now_utc = datetime.now(timezone.utc)
         reset_time_utc = (now_utc + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
         time_remaining = reset_time_utc - now_utc
-        
-        hours, remainder = divmod(time_remaining.seconds, 3600)
+        total_seconds = int(time_remaining.total_seconds())
+        hours, remainder = divmod(total_seconds, 3600)
         minutes, _ = divmod(remainder, 60)
 
         print(f"\nWARNING! You have 0 contributions on GitHub today ({today_utc_str}).")
         print(f"Time remaining until reset: {hours} hours, {minutes} minutes.")
         print("Push a commit soon to keep your streak alive! 😨")
-
-    # Footer watermark
-    print("\nProject: https://github.com/0xReLogic/github-streak-alert")
-    print("Made with ❤️  Allen Elzayn")
-
-if __name__ == "__main__":
-    main()
 
