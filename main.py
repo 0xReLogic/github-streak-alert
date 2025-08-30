@@ -12,7 +12,7 @@ GITHUB_USERNAME = os.getenv("GITHUB_USERNAME")
 GITHUB_TOKEN = os.getenv("GITHUB_PAT")
 GITHUB_API_URL = "https://api.github.com/graphql"
 
-def get_todays_contribution_count(username: str, token: str) -> int | None:
+def get_todays_contribution_count(username: str, token: str) -> Optional[int]:
     """Fetches the total contribution count for today using the GitHub GraphQL API."""
     if not username or not token:
         print("Error: GITHUB_USERNAME or GITHUB_PAT not found in .env file.")
