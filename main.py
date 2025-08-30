@@ -65,7 +65,7 @@ def get_todays_contribution_count(username: str, token: str) -> int | None:
         print(f"An unexpected error occurred: {e}")
         return None
 
-def main():
+def main() -> None:
     today_utc_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     print(f"Checking contributions for {GITHUB_USERNAME} on {today_utc_str} (UTC)...")
     
